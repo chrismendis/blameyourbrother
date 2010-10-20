@@ -76,14 +76,21 @@ button {  width: auto; overflow: visible; }
     Author: 
  */
 
-body {font-weight:bold;font-family:Arial, sans-serif;color:#6cc9e9;}
-
-
-
-
-
-
-
+body {width:960px;margin:60px auto 10px;font:bold 16px/1em Arial,sans-serif;color:#6cc9e9;background:#1e3065;}
+header, section, footer {width:844px;margin:0 auto;}
+header h1 {width:844px;height:493px;margin:0 auto;background:url(../images/logo.jpg) left top no-repeat;}
+#coming-soon hgroup {float:left;}
+#twitter {float:left;width:46px;height:44px;margin:38px 0 0 10px;background:url(../images/twitter.png) left top no-repeat;}
+#coming-soon h1 {margin:24px 0 6px;font-size:38px;line-height:1em;text-transform:uppercase;}
+#coming-soon h2 a, #contact a {color:#6cc9e9;text-decoration:none;}
+#coming-soon h2 a:hover, #contact a:hover {border-bottom:1px solid #6cc9e9;}
+#contact h1 {margin:26px 0 8px;font-size:23px;line-height:1em;}
+#contact ul {margin:0;list-style:none;}
+#contact li {float:left;margin:0 0 0 35px;padding:6px 35px 6px 0;border-right:1px solid #6cc9e9;}
+#contact .first {margin:0;}
+#contact .last {padding:6px 0;border-right:none;}
+#contact h2 {margin:0 0 6px;}
+footer {margin:18px auto 0;text-align:right;font-size:10px;font-weight:normal;opacity:0.5;}
 
 /* 
  * print styles
