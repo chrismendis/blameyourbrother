@@ -25,7 +25,7 @@
   </style>
   <script src="http://assets.blameyourbrother.com/js/modernizr-1.5.min.js"></script>
 </head>
-<body class="{block:IndexPage}home{/block:IndexPage}{block:PermalinkPage}post {block:PostTitle}{PostTitle}{/block:PostTitle}{/block:PermalinkPage}">
+<body class="{block:IndexPage}home{/block:IndexPage}{block:PermalinkPage}post {block:PostTitle}{PlaintextPostTitle}{/block:PostTitle}{/block:PermalinkPage}">
   <header>
     <h1><a href="http://blameyourbrother.com">{Title}</a></h1>
   </header>
