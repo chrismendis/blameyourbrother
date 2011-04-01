@@ -5,6 +5,7 @@
   <meta name="color:Background" content="#ffffff">
   <meta name="image:Background" content="">
   <meta name="font:Body" content="Arial">
+  <meta name="text:Disqus Shortname" content="">
   <meta charset="utf-8">
   <title>{Title} &mdash; {block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
   {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
@@ -24,13 +25,13 @@
   </style>
   <script src="http://assets.blameyourbrother.com/js/modernizr-1.5.min.js"></script>
 </head>
-<body class="{block:IndexPage}home{/block:IndexPage}{block:PermalinkPage}post{block:PermalinkPage} ">
+<body class="{block:IndexPage}home{/block:IndexPage}{block:PermalinkPage}post {block:PostTitle}{PostTitle}{/block:PostTitle}{/block:PermalinkPage}">
   <header>
     <h1><a href="http://blameyourbrother.com">{Title}</a></h1>
   </header>
   <div id="main" role="main" class="clearfix">
-    {block:IndexPage}
     <section id="posts">
+      {block:IndexPage}
       {block:Posts}
       <article class="post">
         {block:Text}
@@ -42,7 +43,7 @@
         {/block:Date}
         {Body}
         {/block:Text}
-        <p class="links"><a href="{Permalink}">Permalink</a> | <a href="{Permalink}/#disqus">Comments</a></p>
+        <p class="links"><a href="{Permalink}">Permalink</a>{block:IfDisqusShortname} | <a class="dsq-comment-count" href="{Permalink}#disqus_thread">Comments</a>{/block:IfDisqusShortname}</p>
       </article>
       {/block:Posts}
       {block:Pagination}
@@ -53,16 +54,38 @@
         </ol>
       </nav>
       {/block:Pagination}
+      {/block:IndexPage}
+      {block:PermalinkPage}
+      {block:Posts}
+      <article class="post">
+        {block:PostTitle}
+        <h2>{PostTitle}</h2>
+        {block:Date}
+        <p class="date">{Month} {DayOfMonth}, {Year} at {12Hour}:{Minutes} {AmPm}</p>
+        {/block:Date}
+        {/block:PostTitle}
+        {block:Text}
+        {Body}
+        {/block:Text}
+        {block:IfDisqusShortname}
+        <div id="disqus_thread"></div>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+        {/block:IfDisqusShortname}
+      </article>
+      {/block:Posts}
+      {/block:PermalinkPage}
     </section>
+    {block:Twitter}
     <aside>
-      <h2 id="twitter"><a href="https://twitter.com/blameyourbro">Follow us on Twitter</a></h2>
+      <h2 id="twitter"><a href="https://twitter.com/{TwitterUsername}">Follow us on Twitter</a></h2>
     </aside>
-    {/block:IndexPage}
+    {/block:Twitter}
     <nav id="global-nav">
       <ul>
         <li id="home-link"><a href="http://blameyourbrother.com">Home</a></li>
         {block:Pages}
-        <li><a href="{URL}">{Label}</a></li>
+        <li id="{Label}-link"><a href="{URL}">{Label}</a></li>
         {/block:Pages}
       </ul>
     </nav>
@@ -70,5 +93,37 @@
   <footer>
     <p>All work &copy; <span id="copy-year">2010</span> Blame Your Brother</p>
   </footer>
+  {block:PermalinkPage}
+  {block:IfDisqusShortname}
+  <script>
+    /**
+      * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+      */
+    var disqus_url = "{Permalink}",
+    disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  {/block:IfDisqusShortname}
+  {/block:PermalinkPage}
+  {block:IndexPage}
+  {block:IfDisqusShortname}
+  <script>
+  (function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+        if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+        }
+    }
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+  })();
+  </script>
+  {/block:IfDisqusShortname}
+  {/block:IndexPage}
 </body>
 </html>
