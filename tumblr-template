@@ -111,17 +111,24 @@
   {/block:PermalinkPage}
   {block:IndexPage}
   {block:IfDisqusShortname}
-  <script>
-  (function() {
-    var links = document.getElementsByTagName('a');
-    var query = '?';
-    for(var i = 0; i < links.length; i++) {
-        if(links[i].href.indexOf('#disqus_thread') >= 0) {
-            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-        }
-    }
-    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
-  })();
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  var disqus_shortname = '{text:Disqus Shortname}';
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'http://{text:Disqus Shortname}.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    
+    // Do some custom Disqus rendering (don't like seeing "0 Comments and 0 Reactions")
+    var cleanCommentLinks = function () {
+      $(".dsq-comment-count").each(function (index) {
+        var $el = $(this);
+
+        ($el.text() === "0 Comments and 0 Reactions") && $el.text("Comments");
+      });
+    };
+    window.setTimeout(function () { cleanCommentLinks(); }, 500);
+  }());
   </script>
   {/block:IfDisqusShortname}
   {/block:IndexPage}
