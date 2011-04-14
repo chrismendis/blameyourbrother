@@ -7,7 +7,7 @@
   <meta name="font:Body" content="Arial">
   <meta name="text:Disqus Shortname" content="">
   <meta charset="utf-8">
-  <title>{Title} &mdash; {block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
+  <title>{Title}{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}</title>
   {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="author" content="Blame Your Brother">
@@ -93,19 +93,27 @@
   <footer>
     <p>All work &copy; <span id="copy-year">2010</span> Blame Your Brother</p>
   </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <script>
+  // Put the current year into the Copyright message
+  var now = new Date();
+  $("#copy-year").text(now.getFullYear());
+  </script>
   {block:PermalinkPage}
   {block:IfDisqusShortname}
   <script>
-    /**
-      * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
-      */
-    var disqus_url = "{Permalink}",
-    disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
-    (function() {
-     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-     dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
-     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+    if ({block:PostTitle}{JSPlaintextPostTitle}{/block:PostTitle} !== "About") {
+      /**
+        * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+        */
+      var disqus_url = "{Permalink}",
+      disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
+      (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    }
   </script>
   {/block:IfDisqusShortname}
   {/block:PermalinkPage}
