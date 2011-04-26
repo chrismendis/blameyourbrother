@@ -184,8 +184,11 @@ body {min-width:960px;}
 header h1 {width:100%;height:88px;text-indent:-9999px;overflow:hidden;background:transparent url(../images/header.png) 50% top no-repeat;}
 #main {width:700px;position:relative;margin:59px auto 0;}
 #global-nav {float:left;width:100px;}
-#global-nav ul, .post h2 {font-size:13px;font-weight:bold;text-transform:uppercase;}
-.About h2, .Contact h2 {margin:0 0 10px;}
+#global-nav ul, .post h2 {font:normal 13px/13px ArcherBold, serif;text-transform:uppercase;}
+.About h2, .Contact h2 {display:none;}
+.About h2.show, .Contact h2.show {display:block;margin:0 0 10px;}
+.Contact h2.show {margin:0 0 25px;}
+.Contact h2.name {margin:0 0 10px;font-family:Arial, Helvetica, serif;}
 #global-nav a {display:block;margin:0 0 13px;color:#4e4e4e;text-decoration:none;}
 #global-nav a:hover, .home #global-nav #home-link a, .About #global-nav #About-link a, .Contact #global-nav #Contact-link a {color:#63e1ca;}
 #posts {display:inline;float:right;width:385px;margin:0 198px 0 0;}
@@ -202,7 +205,7 @@ aside {position:absolute;width:145px;right:0;}
 #pager a {display:block;width:64px;height:27px;}
 #pager #next {float:left;background-position:0 0;}
 .post #twitter {text-transform:none;}
-#twitter a {display:block;height:18px;padding:0 0 0 22px;font-size:11px;line-height:18px;font-weight:bold;color:#57bcdd;text-decoration:none;background:transparent url(../images/twitter-tumblr.png) left center no-repeat;}
+#twitter a {display:block;height:18px;padding:0 0 0 22px;font:bold 11px/18px Arial, Helvetica, sans-serif;color:#57bcdd;text-decoration:none;background:transparent url(../images/twitter-tumblr.png) left center no-repeat;}
 footer {width:582px;margin:0 auto 25px;padding:0 0 0 118px;font-size:10px;color:#63e1ca;}
 #tumblr_controls {display:none;}
 
@@ -256,7 +259,7 @@ footer {width:582px;margin:0 auto 25px;padding:0 0 0 118px;font-size:10px;color:
   header {width:419px;}
   header h1 {width:419px;height:116px;background:transparent url(../images/header-mobile.jpg) left top no-repeat;}
   #global-nav {width:402px;float:none;padding:0 0 0 17px;margin:20px 0 24px;overflow:hidden;}
-  #global-nav ul li, .post h2 {float:left;font:normal 14px/14px ArcherBold, serif;}
+  #global-nav ul li, .post h2 {float:left;font-size:14px;line-height:14px;}
   #global-nav a {display:inline;margin:0;}
   #global-nav #home-link {padding:0 115px 0 0;}
   #global-nav #Contact-link {float:right;margin:0 17px 0 0;}
